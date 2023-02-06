@@ -1,0 +1,16 @@
+﻿[
+  {
+    "outputFile": "Shared/MainLayout.razor.css",
+    "inputFile": "Shared/MainLayout.razor.scss",
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "Shared/NavMenu.razor.css",
+    "inputFile": "Shared/NavMenu.razor.scss",
+    "minify": {
+      "enabled": true
+    }
+  }
+]

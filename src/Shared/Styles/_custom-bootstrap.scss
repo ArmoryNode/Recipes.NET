@@ -1,0 +1,21 @@
+﻿// Required for calculating WCAG contrast ratios
+@import "./lib/bootstrap/scss/functions";
+
+// Color overrides
+@import "_variables";
+
+// Required by the component SASS files
+@import "./lib/bootstrap/scss/variables";
+@import "./lib/bootstrap/scss/mixins";
+@import "./lib/bootstrap/scss/maps";
+
+// Only add the components that we're going to use
+@import "./lib/bootstrap/scss/root";
+@import "./lib/bootstrap/scss/reboot";
+@import "./lib/bootstrap/scss/utilities";
+@import "./lib/bootstrap/scss/type";
+@import "./lib/bootstrap/scss/buttons";
+@import "./lib/bootstrap/scss/button-group";
+@import "./lib/bootstrap/scss/card";
+@import "./lib/bootstrap/scss/helpers";
+@import "./lib/bootstrap/scss/alert";

@@ -1,0 +1,58 @@
+﻿$red: #FF625B;
+$orange: #FBB055;
+$yellow: #FFDE6B;
+$green: #7DBA84;
+$blue: #0075FF;
+$purple: #6E5A94;
+$indigo: #495E82;
+$teal: #0AC7B7;
+$cyan: #2FD3E2;
+$grey: #2C2D31;
+$black: #1B1B1B;
+$white: #FDFDFD;
+$offwhite: #F0F1F3;
+$cream: #BDBEC0;
+
+$colors: (
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "blue": $blue,
+    "purple": $purple,
+    "indigo": $indigo,
+    "teal": $teal,
+    "cyan": $cyan,
+    "gray": $grey,
+    "dark-gray": $black,
+    "white": $white,
+);
+
+$primary: $blue;
+$secondary: $grey;
+$success: $green;
+$info: $purple;
+$warning: $orange;
+$danger: $red;
+$light: $cream;
+$dark: $black;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "warning": $warning,
+    "danger": $danger,
+    "info": $info,
+    "light": $light,
+    "dark": $dark
+);
+
+$transition-timing-function: ease;
+$transition-duration: .3s;
+
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
