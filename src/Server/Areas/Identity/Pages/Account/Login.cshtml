@@ -1,0 +1,47 @@
+﻿@page
+@using static RecipesDotNet.Server.Infrastructure.Constants.Authentication
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.min.css" />
+}
+
+<div id="externalProviderContainer">
+    <div id="siteTitle">
+        <i title="Recipes.NET Icon" class="fa fa-fw fa-duotone fa-kitchen-set fa-4x"></i>
+        <h1>Recipes.NET</h1>
+    </div>
+    <form id="externalProviderForm" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <h2>Sign in with</h2>
+        @foreach (var provider in Model.ExternalLogins!)
+        {
+            switch (provider.DisplayName)
+            {
+                case ExternalProviders.Google:
+                    <button type="submit" class="external-provider" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                        <div class="external-provider-inner">
+                            <img src="~/img/google_logo.svg" />
+                            <span>Google</span>
+                        </div>
+                    </button>
+                    break;
+                case ExternalProviders.Microsoft:
+                    <button type="submit" class="external-provider" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                        <div class="external-provider-inner">
+                            <img src="~/img/microsoft_logo.svg" />
+                            <span>Microsoft</span>
+                        </div>
+                    </button>
+                    break;
+            }
+        }
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

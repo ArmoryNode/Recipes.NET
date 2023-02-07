@@ -1,0 +1,42 @@
+@import "../../Shared/Styles/_variables";
+
+#wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background-color: var(--background-color);
+
+    main {
+        height: 100%;
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        color: $grey;
+    }
+}
+
+#wrapper.dark-mode {
+    --background-color: #{$black};
+    --foreground-color: #{$grey};
+    --text-color: #{$white};
+
+    .dark-mode-toggle {
+        --button-background: #{darken($offwhite, 20)};
+        --button-icon-color: #{$black};
+    }
+}
+
+#wrapper:not(.dark-mode) {
+    --background-color: #{$offwhite};
+    --foreground-color: #{$white};
+    --text-color: #{$black};
+
+    .dark-mode-toggle {
+        --button-background: #{$black};
+        --button-icon-color: #{$offwhite};
+    }
+}

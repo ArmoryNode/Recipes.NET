@@ -1,6 +1,7 @@
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RecipesDotNet.Infrastructure.Identity;
 using RecipesDotNet.Infrastructure.Persistence;
@@ -20,6 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()

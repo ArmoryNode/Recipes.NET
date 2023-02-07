@@ -1,7 +1,9 @@
-﻿@using Blazored.LocalStorage
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Blazored.LocalStorage
 
 @inherits LayoutComponentBase
 
+@inject NavigationManager NavManager
 @inject ISyncLocalStorageService LocalStorage
 @inject IJSRuntime JSRuntime
 
@@ -31,7 +33,15 @@
         </nav>
         <div id="sidebarFooter">
             <div class="user-authentication">
-                <a href="#"><i class="fa-solid fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Sign In</a>
+                <AuthorizeView>
+                    <Authorized>
+                        @*<button type="button" class="btn btn-link" @onclick="BeginLogIn"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</button>*@
+                        <a href="authentication/login" class="btn btn-link"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</a>
+                    </Authorized>
+                    <NotAuthorized>
+                        <button type="button" class="btn btn-link" @onclick="BeginLogOut"><i class="fa-regular fa-fw fa-power-off fa-xl"></i>&nbsp;Log Out</button>
+                    </NotAuthorized>
+                </AuthorizeView>
             </div>
         </div>
     </div>
@@ -65,5 +75,15 @@
     public void DarkModeToggled(MouseEventArgs args)
     {
         DarkModeEnabled = !DarkModeEnabled;
+    }
+
+    //protected void BeginLogIn(MouseEventArgs args)
+    //{
+    //    NavManager.NavigateToLogin("authentication/login");
+    //}
+
+    protected void BeginLogOut(MouseEventArgs args)
+    {
+        NavManager.NavigateToLogout("authentication/logout");
     }
 }

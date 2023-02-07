@@ -1,8 +1,6 @@
 ﻿@import "../../Shared/Styles/_variables";
 @import "../../Shared/Styles/_mixins";
 
-$dark-theme: true;
-
 #wrapper {
     --sidebar-width-lg: 280px;
     --sidebar-width-xl: 200px;
@@ -16,8 +14,8 @@ $dark-theme: true;
     .dark-mode-toggle {
         display: flex;
         position: absolute;
-        top: 10px;
-        right: 10px;
+        bottom: 15px;
+        right: 15px;
         width: 40px;
         height: 40px;
         border-radius: 50%;

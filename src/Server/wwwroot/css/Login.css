@@ -1,0 +1,160 @@
+﻿@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-Regular.ttf") url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+#externalProviderContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#externalProviderContainer #siteTitle {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 100px;
+  align-items: center;
+  color: var(--text-color);
+  animation: fly-in 0.6s ease;
+}
+#externalProviderContainer #siteTitle h1 {
+  margin-left: 20px;
+  font-size: 60px;
+}
+#externalProviderContainer #externalProviderForm {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: var(--foreground-color);
+  color: var(--text-color);
+  padding: 30px 20px 40px;
+  border-radius: 5px;
+  animation: fly-up 0.6s ease;
+  --shadow-color: #1B1B1B;
+  box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.34), 0.4px 0.8px 1px -1.2px rgba(27, 27, 27, 0.34), 1px 2px 2.5px -2.5px rgba(27, 27, 27, 0.34);
+}
+#externalProviderContainer #externalProviderForm h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+#externalProviderContainer #externalProviderForm button.external-provider {
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  display: inline;
+  align-self: center;
+  width: 200px;
+  height: 50px;
+  padding: 10px 15px;
+  --shadow-color: #1B1B1B;
+  box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.34), 0.4px 0.8px 1px -1.2px rgba(27, 27, 27, 0.34), 1px 2px 2.5px -2.5px rgba(27, 27, 27, 0.34);
+}
+#externalProviderContainer #externalProviderForm button.external-provider::before, #externalProviderContainer #externalProviderForm button.external-provider::after {
+  border-radius: inherit;
+}
+#externalProviderContainer #externalProviderForm button.external-provider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  --shadow-color: #1B1B1B;
+  box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.34), 0.4px 0.8px 1px -1.2px rgba(27, 27, 27, 0.34), 1px 2px 2.5px -2.5px rgba(27, 27, 27, 0.34);
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+#externalProviderContainer #externalProviderForm button.external-provider:hover::before {
+  opacity: 1;
+}
+#externalProviderContainer #externalProviderForm button.external-provider .external-provider-inner {
+  display: flex;
+  align-items: center;
+}
+#externalProviderContainer #externalProviderForm button.external-provider .external-provider-inner img {
+  width: 20px;
+}
+#externalProviderContainer #externalProviderForm button.external-provider .external-provider-inner span {
+  margin: 0 auto;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google] {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: #1B1B1B;
+  background-color: #FFF;
+  border-radius: 5px;
+  border: 1px solid #4285F4;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+  transition-property: all;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google]:hover {
+  background-color: #f7f7f7;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google]:active {
+  background-color: #ebebeb;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google]::after {
+  box-shadow: 0 0 0 0.25rem rgba(44, 45, 49, 0.2);
+  opacity: 0;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google]:active::after, #externalProviderContainer #externalProviderForm button.external-provider[value=Google]:focus::after {
+  opacity: 1;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Microsoft] {
+  font-weight: bolder;
+  color: #FFF;
+  background-color: #2f2f2f;
+}
+#externalProviderContainer #externalProviderForm button.external-provider ~ button.external-provider {
+  margin-top: 1em;
+}
+
+@media screen and (min-width: 992px) {
+  #externalProviderContainer #externalProviderForm {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 992px) {
+  #externalProviderContainer #siteTitle img {
+    width: 60px;
+  }
+  #externalProviderContainer #siteTitle h1 {
+    margin-left: 20px;
+    font-size: 40px;
+  }
+  #externalProviderContainer #externalProviderForm {
+    width: 80%;
+  }
+}
+@keyframes fly-in {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fly-up {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

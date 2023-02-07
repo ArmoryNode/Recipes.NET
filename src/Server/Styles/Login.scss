@@ -1,0 +1,196 @@
+﻿@import "../../Shared/Styles/_mixins";
+@import "../../Shared/Styles/_variables";
+
+@font-face {
+    font-family: Roboto;
+    src: url('../wwwroot/fonts/Roboto/Roboto-Regular.ttf') url('../wwwroot/fonts/Roboto//Roboto-Medium.ttf');
+}
+
+@mixin animate($animation-name) {
+    animation: $animation-name .6s ease;
+}
+
+#externalProviderContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    #siteTitle {
+        display: flex;
+        flex-flow: row nowrap;
+        margin-bottom: 100px;
+        align-items: center;
+        color: var(--text-color);
+        @include animate(fly-in);
+
+        h1 {
+            margin-left: 20px;
+            font-size: 60px;
+        }
+    }
+
+    #externalProviderForm {
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: var(--foreground-color);
+        color: var(--text-color);
+        padding: 30px 20px 40px;
+        border-radius: 5px;
+        @include animate(fly-up);
+        @include low-elevation;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        button.external-provider {
+            position: relative;
+            border: none;
+            outline: none;
+            background-color: #fff;
+            display: inline;
+            align-self: center;
+            width: 200px;
+            height: 50px;
+            padding: 10px 15px;
+            @include low-elevation;
+
+            &::before, &::after {
+                border-radius: inherit;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                @include low-elevation;
+                @include transition-for(opacity);
+            }
+
+            &:hover::before {
+                opacity: 1;
+            }
+
+            .external-provider-inner {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20px;
+                }
+
+                span {
+                    margin: 0 auto;
+                }
+            }
+
+            &[value="Google"] {
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+                font-weight: bold;
+                color: $dark;
+                background-color: #FFF;
+                border-radius: 5px;
+                border: 1px solid #4285F4;
+                @include transition-for(all);
+
+                &:hover {
+                    background-color: darken(#FFF, 3);
+                }
+
+                &:active {
+                    background-color: darken(#FFF, 8);
+                }
+
+                &::after {
+                    box-shadow: 0 0 0 0.25rem rgba($grey, .2);
+                    opacity: 0;
+                }
+
+                &:active::after, &:focus::after {
+                    opacity: 1;
+                }
+            }
+
+            &[value="Microsoft"] {
+                font-weight: bolder;
+                color: #FFF;
+                background-color: #2f2f2f;
+            }
+        }
+
+        button.external-provider ~ button.external-provider {
+            margin-top: 1em;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 992px) {
+    #externalProviderContainer {
+        #externalProviderForm {
+            width: 400px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #externalProviderContainer {
+        #siteTitle {
+            img {
+                width: 60px;
+            }
+
+            h1 {
+                margin-left: 20px;
+                font-size: 40px;
+            }
+        }
+
+        #externalProviderForm {
+            width: 80%;
+        }
+    }
+}
+
+@keyframes fly-in {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fly-up {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
