@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\RecipesDotNet.Shared.csproj" />
+    <ProjectReference Include="..\Shared\Recipes.NET.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

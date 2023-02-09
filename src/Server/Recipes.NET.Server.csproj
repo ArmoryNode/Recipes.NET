@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\RecipesDotNet.Client.csproj" />
-    <ProjectReference Include="..\Infrastructure\RecipesDotNet.Infrastructure.csproj" />
-    <ProjectReference Include="..\Shared\RecipesDotNet.Shared.csproj" />
+    <ProjectReference Include="..\Client\Recipes.NET.Client.csproj" />
+    <ProjectReference Include="..\Infrastructure\Recipes.NET.Infrastructure.csproj" />
+    <ProjectReference Include="..\Shared\Recipes.NET.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
