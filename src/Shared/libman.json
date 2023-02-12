@@ -1,14 +1,13 @@
 {
 	"version": "1.0",
-	"defaultProvider": "cdnjs",
+	"defaultProvider": "unpkg",
 	"libraries": [
 		{
-			"library": "bootstrap@5.3.0-alpha1",
+			"library": "bootstrap@5.2.3",
 			"destination": "Styles/lib/bootstrap/",
 			"files": [
-				"LICENSE",
-				"dist/js/bootstrap.min.js",
-				"scss/**/*.scss"
+				"scss/**/*.scss",
+				"LICENSE"
 			]
 		}
 	]
