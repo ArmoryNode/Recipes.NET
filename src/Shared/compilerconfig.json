@@ -5,5 +5,12 @@
     "minify": {
       "enabled": true
     }
+  },
+  {
+    "outputFile": "../Server/wwwroot/css/bootstrap/bootstrap.css",
+    "inputFile": "Styles/_custom-bootstrap.scss",
+    "minify": {
+      "enabled": true
+    }
   }
 ]
