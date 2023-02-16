@@ -7,7 +7,7 @@
     }
   },
   {
-    "outputFile": "../Server/wwwroot/css/bootstrap/bootstrap.css",
+    "outputFile": "../Server/wwwroot/css/bootstrap/server-bootstrap.css",
     "inputFile": "Styles/_custom-bootstrap.scss",
     "minify": {
       "enabled": true
