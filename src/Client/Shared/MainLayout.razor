@@ -36,10 +36,10 @@
                 <AuthorizeView>
                     <Authorized>
                         @*<button type="button" class="btn btn-link" @onclick="BeginLogIn"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</button>*@
-                        <a href="authentication/login" class="btn btn-link"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</a>
+                        <button type="button" class="btn btn-link" @onclick="BeginLogOut"><i class="fa-regular fa-fw fa-power-off fa-xl"></i>&nbsp;Log Out</button>
                     </Authorized>
                     <NotAuthorized>
-                        <button type="button" class="btn btn-link" @onclick="BeginLogOut"><i class="fa-regular fa-fw fa-power-off fa-xl"></i>&nbsp;Log Out</button>
+                        <a href="authentication/login" class="btn btn-link"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</a>
                     </NotAuthorized>
                 </AuthorizeView>
             </div>
