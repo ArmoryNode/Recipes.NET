@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\Server\wwwroot\css\bootstrap\server-bootstrap.css" Link="server-bootstrap.css" />
+    <Content Include="..\Server\wwwroot\css\bootstrap\server-bootstrap.min.css" Link="server-bootstrap.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.0.0" />
   </ItemGroup>
 
