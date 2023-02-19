@@ -35,8 +35,7 @@
             <div class="user-authentication">
                 <AuthorizeView>
                     <Authorized>
-                        @*<button type="button" class="btn btn-link" @onclick="BeginLogIn"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</button>*@
-                        <button type="button" class="btn btn-link" @onclick="BeginLogOut"><i class="fa-regular fa-fw fa-power-off fa-xl"></i>&nbsp;Log Out</button>
+                        <a href="#" @onclick="BeginLogOut"><i class="fa-regular fa-fw fa-power-off fa-lg"></i>&nbsp;Log Out</a>
                     </Authorized>
                     <NotAuthorized>
                         <a href="authentication/login" class="btn btn-link"><i class="fa-regular fa-fw fa-right-to-bracket fa-xl"></i>&nbsp;Log In</a>
@@ -76,11 +75,6 @@
     {
         DarkModeEnabled = !DarkModeEnabled;
     }
-
-    //protected void BeginLogIn(MouseEventArgs args)
-    //{
-    //    NavManager.NavigateToLogin("authentication/login");
-    //}
 
     protected void BeginLogOut(MouseEventArgs args)
     {

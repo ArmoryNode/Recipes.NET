@@ -24,7 +24,7 @@
 #externalProviderContainer #externalProviderForm {
   display: flex;
   flex-flow: column nowrap;
-  background-color: var(--foreground-color);
+  background-color: #2C2D31;
   color: var(--text-color);
   padding: 30px 20px 40px;
   border-radius: 5px;
@@ -44,8 +44,6 @@
   display: inline;
   align-self: center;
   width: 200px;
-  height: 50px;
-  padding: 10px 15px;
   --shadow-color: #1B1B1B;
   box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.34), 0.4px 0.8px 1px -1.2px rgba(27, 27, 27, 0.34), 1px 2px 2.5px -2.5px rgba(27, 27, 27, 0.34);
 }
@@ -61,7 +59,7 @@
   height: 100%;
   opacity: 0;
   --shadow-color: #1B1B1B;
-  box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.34), 0.4px 0.8px 1px -1.2px rgba(27, 27, 27, 0.34), 1px 2px 2.5px -2.5px rgba(27, 27, 27, 0.34);
+  box-shadow: 0.3px 0.5px 0.7px rgba(27, 27, 27, 0.36), 0.8px 1.6px 2px -0.8px rgba(27, 27, 27, 0.36), 2.1px 4.1px 5.2px -1.7px rgba(27, 27, 27, 0.36), 5px 10px 12.6px -2.5px rgba(27, 27, 27, 0.36);
   transition-timing-function: ease;
   transition-duration: 0.3s;
   transition-property: opacity;
@@ -73,23 +71,24 @@
   display: flex;
   align-items: center;
 }
-#externalProviderContainer #externalProviderForm button.external-provider .external-provider-inner img {
-  width: 20px;
-}
-#externalProviderContainer #externalProviderForm button.external-provider .external-provider-inner span {
-  margin: 0 auto;
-}
 #externalProviderContainer #externalProviderForm button.external-provider[value=Google] {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: #1B1B1B;
+  color: rgba(0, 0, 0, 0.54);
   background-color: #FFF;
   border-radius: 5px;
-  border: 1px solid #4285F4;
+  height: 40px;
   transition-timing-function: ease;
   transition-duration: 0.3s;
   transition-property: all;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google] .external-provider-inner img {
+  width: 18px;
+  margin-left: 8px;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Google] .external-provider-inner span {
+  margin-inline: auto;
 }
 #externalProviderContainer #externalProviderForm button.external-provider[value=Google]:hover {
   background-color: #f7f7f7;
@@ -105,9 +104,20 @@
   opacity: 1;
 }
 #externalProviderContainer #externalProviderForm button.external-provider[value=Microsoft] {
-  font-weight: bolder;
-  color: #FFF;
-  background-color: #2f2f2f;
+  font-family: "Segoe UI";
+  font-weight: 600;
+  font-size: 15px;
+  color: #5E5E5E;
+  background-color: #FFFFFF;
+  padding-inline: 12px;
+  height: 41px;
+  border: 1px solid #8C8C8C;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Microsoft] .external-provider-inner img {
+  width: 21px;
+}
+#externalProviderContainer #externalProviderForm button.external-provider[value=Microsoft] .external-provider-inner span {
+  margin-inline: auto;
 }
 #externalProviderContainer #externalProviderForm button.external-provider ~ button.external-provider {
   margin-top: 1em;

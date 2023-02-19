@@ -34,7 +34,7 @@
     #externalProviderForm {
         display: flex;
         flex-flow: column nowrap;
-        background-color: var(--foreground-color);
+        background-color: $grey;
         color: var(--text-color);
         padding: 30px 20px 40px;
         border-radius: 5px;
@@ -54,8 +54,6 @@
             display: inline;
             align-self: center;
             width: 200px;
-            height: 50px;
-            padding: 10px 15px;
             @include low-elevation;
 
             &::before, &::after {
@@ -70,7 +68,7 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                @include low-elevation;
+                @include medium-elevation;
                 @include transition-for(opacity);
             }
 
@@ -81,25 +79,28 @@
             .external-provider-inner {
                 display: flex;
                 align-items: center;
-
-                img {
-                    width: 20px;
-                }
-
-                span {
-                    margin: 0 auto;
-                }
             }
 
             &[value="Google"] {
                 box-sizing: border-box;
                 font-family: 'Roboto', sans-serif;
                 font-weight: bold;
-                color: $dark;
+                color: rgba(0,0,0, .54);
                 background-color: #FFF;
                 border-radius: 5px;
-                border: 1px solid #4285F4;
+                height: 40px;
                 @include transition-for(all);
+
+                .external-provider-inner {
+                    img {
+                        width: 18px;
+                        margin-left: 8px
+                    }
+
+                    span {
+                        margin-inline: auto;
+                    }
+                }
 
                 &:hover {
                     background-color: darken(#FFF, 3);
@@ -120,9 +121,24 @@
             }
 
             &[value="Microsoft"] {
-                font-weight: bolder;
-                color: #FFF;
-                background-color: #2f2f2f;
+                font-family: "Segoe UI";
+                font-weight: 600;
+                font-size: 15px;
+                color: #5E5E5E;
+                background-color: #FFFFFF;
+                padding-inline: 12px;
+                height: 41px;
+                border: 1px solid #8C8C8C;
+
+                .external-provider-inner {
+                    img {
+                        width: 21px;
+                    }
+
+                    span {
+                        margin-inline: auto;
+                    }
+                }
             }
         }
 
