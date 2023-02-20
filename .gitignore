@@ -352,3 +352,10 @@ MigrationBackup/
 
 # sass output
 **/wwwroot/**/*.css
+
+# Razor isolated CSS
+/src/Client/**/*.razor.css
+
+# Razor isolated javascript
+/src/Client/**/*.razor.js
+/src/Client/**/*.razor.js.map
