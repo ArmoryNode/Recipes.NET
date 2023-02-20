@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using RecipesDotNet.Infrastructure.Identity;
+using static RecipesDotNet.Shared.Infrastructure.Authentication;
 
 namespace Recipes.NET.Server.Areas.Identity.Pages.Account
 {
@@ -85,6 +86,10 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Display(Name = "User Name")]
+            [Required(ErrorMessage = "Please enter a username")]
+            public string UserName { get; set; }
         }
 
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -99,7 +104,7 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
@@ -117,6 +122,11 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
+
+                var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+
+                await UpdateUserProfile(user, info);
+
                 return LocalRedirect(returnUrl);
             }
             if (result.IsLockedOut)
@@ -141,7 +151,7 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             // Get the information about the user from the external login provider
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
@@ -153,9 +163,10 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                var userEmail = info.Principal.FindFirstValue(ClaimTypes.Email);
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, userEmail, CancellationToken.None);
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -180,7 +191,7 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
                         // If account confirmation is required, we need to show the link if we don't have a real email sender
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {
-                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
+                            return RedirectToPage("./RegisterConfirmation", new { Input.Email });
                         }
 
                         await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);
@@ -219,6 +230,20 @@ namespace Recipes.NET.Server.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
+        }
+
+        private Task UpdateUserProfile(ApplicationUser user, ExternalLoginInfo info)
+        {
+            if (info.Principal.HasClaim(c => c.Type == CustomClaimTypes.Image))
+                user.ImageUrl = info.Principal.FindFirstValue(CustomClaimTypes.Image);
+
+            if (info.Principal.HasClaim(c => c.Type == ClaimTypes.GivenName))
+                user.FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName);
+
+            if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Surname))
+                user.LastName = info.Principal.FindFirstValue(ClaimTypes.Surname);
+
+            return _userManager.UpdateAsync(user);
         }
     }
 }
