@@ -1,6 +1,46 @@
 @import "../../Shared/Styles/_mixins";
 @import "../../Shared/Styles/_variables";
 
-#registerAccountContainer {
+// for breakpoint mixins
+@import "../../Shared/Styles/lib/bootstrap/scss/functions";
+@import "../../Shared/Styles/lib/bootstrap/scss/variables";
+@import "../../Shared/Styles/lib/bootstrap/scss/mixins";
 
+#registerAccountContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    #formContainer {
+        background-color: $grey;
+        padding: 30px;
+
+        .button-container {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    #registerAccountContainer {
+        #formContainer {
+            width: 650px;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    #registerAccountContainer {
+        #formContainer {
+            width: 80%;
+        }
+    }
 }

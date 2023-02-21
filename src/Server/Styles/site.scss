@@ -1,5 +1,9 @@
 @import "../../Shared/Styles/_variables";
 
+body {
+    color: $white;
+}
+
 #wrapper {
     display: flex;
     flex-flow: column;
